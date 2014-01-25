@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringFlection", "StringFlection.csproj", "{733F0D98-F72E-47AD-B950-DBEC5354937B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringFlection.Tests", "..\StringFlection.Tests\StringFlection.Tests.csproj", "{9374C333-EDBC-4F09-87A4-07FAFE04610A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{548D09B5-F777-445D-8253-A06A1F6FF727}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		StringFlection.vsmdi = StringFlection.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = StringFlection.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{733F0D98-F72E-47AD-B950-DBEC5354937B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{733F0D98-F72E-47AD-B950-DBEC5354937B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{733F0D98-F72E-47AD-B950-DBEC5354937B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{733F0D98-F72E-47AD-B950-DBEC5354937B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9374C333-EDBC-4F09-87A4-07FAFE04610A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9374C333-EDBC-4F09-87A4-07FAFE04610A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9374C333-EDBC-4F09-87A4-07FAFE04610A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9374C333-EDBC-4F09-87A4-07FAFE04610A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
