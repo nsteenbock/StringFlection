@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Confluxx.StringFlection.SampleClasses
+namespace Confluxx.StringFlection.Demo
 {
 	public class Person
 	{
 		public string FirstName { get; set; }
 
 		public string LastName { get; set; }
-
-        public DateTime SpecialDay { get; set; }
 
 		public int Age { get; set; }
 
