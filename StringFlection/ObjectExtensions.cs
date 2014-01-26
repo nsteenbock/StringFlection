@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -17,21 +18,22 @@ namespace Confluxx.StringFlection
         {
             StringBuilder sb = new StringBuilder();
             
-            Regex reg = new Regex(@"({)([^}]+)(})", RegexOptions.IgnoreCase);
-            MatchCollection mc = reg.Matches(format);
+            Regex reg = new Regex(@"{([^}]+)}", RegexOptions.IgnoreCase);
+            MatchCollection matches = reg.Matches(format);
 
             int startIndex = 0;
-            foreach (Match m in mc)
+            foreach (Match match in matches)
             {
-                Group group = m.Groups[2];
+                Group group = match.Groups[1];
                 
                 // Append everything before the "{"
                 int length = group.Index - startIndex - 1;
                 sb.Append(format.Substring(startIndex, length));
 
-                string propertyChain = String.Empty;
-                string formatInfo = String.Empty;
+                string propertyChain = null;
+                string formatString = null;
                 int formatIndex = group.Value.IndexOf(":");
+                
                 if (formatIndex == -1) 
                 {
                     propertyChain = group.Value;
@@ -39,15 +41,26 @@ namespace Confluxx.StringFlection
                 else 
                 {
                     propertyChain = group.Value.Substring(0, formatIndex);
-                    formatInfo = group.Value.Substring(formatIndex + 1);
+                    formatString = group.Value.Substring(formatIndex + 1);
                 }
 
-                object propertyChainValue = ObjectStringFlector.GetValue(obj, propertyChain);
+                object value = ObjectStringFlector.GetValue(obj, propertyChain);
+
+                string result = null;
+                object[] invokeArgs = null;
+
+
+                if (formatString != null)
+                    invokeArgs = new object[] { formatString, formatProvider };
+
+                result = (string)value.GetType().InvokeMember(
+                        "ToString",
+                        BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod,
+                        null,
+                        value,
+                        invokeArgs);
                 
-                // TODO: Use formatInfo if available.
-                // TODO: What happens if an exception is thrown.
-                
-                sb.Append(propertyChainValue.ToString());
+                sb.Append(result);
                                 
                 startIndex = group.Index + group.Length + 1;
             }
