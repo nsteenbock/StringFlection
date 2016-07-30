@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/nsteenbock/StringFlection/badge.svg?branch=master)](https://coveralls.io/github/nsteenbock/StringFlection?branch=master)
+
 StringFlection
 ==============
 
